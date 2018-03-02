@@ -82,10 +82,10 @@ class ProductsController extends Controller
             $file->move("public/images",$new_img);
 
             //add detail images
-            if(Input::hasFile('fProductDetail')) {
+            if (Input::hasFile('fProductDetail')) {
                 foreach(Input::file('fProductDetail') as $f) {
                     $new_name = newImage($f->getClientOriginalName());
-                    if(isset($f)) {
+                    if (isset($f)) {
                         $data = [
                             'name' => $new_name,
                             'product_id' => $pro_id
@@ -206,12 +206,12 @@ class ProductsController extends Controller
 
     public function getDelImg($id)
     {
-        if(Request::ajax()) {
+        if (Request::ajax()) {
             $idImg = (int)Request::get('idImg');
             $image_detail = ProductImagesModel::get_productImages_by_id($idImg);
-            if(!empty($image_detail)) {
+            if (!empty($image_detail)) {
                 $img = 'images/'.$image_detail->name;
-                if(file_exists(public_path('images/'.$image_detail->name))) {
+                if (file_exists(public_path('images/'.$image_detail->name))) {
                     File::delete(public_path('images/'.$image_detail->name));
                 }
                 ProductImagesModel::delete_productImages($idImg);

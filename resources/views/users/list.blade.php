@@ -44,6 +44,10 @@
             }
             else if ($user->level == 1) {
                 $level = "Admin";
+            } else if ($user->level == 0) {
+                $level = "Member";
+            } else if ($user->level == 3) {
+                $level == "Manage page";
             }
            
           ?>
@@ -67,7 +71,7 @@
 
         </tbody>
       </table>
-     {{ $users->links() }}
+     
     </div>
   </div>
 </div>

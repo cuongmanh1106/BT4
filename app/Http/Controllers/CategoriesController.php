@@ -50,7 +50,7 @@ Class CategoriesController extends Controller
                 'name.required'=>'Vui lòng nhập tên loại'
             ]
         );
-        if($v->fails()) {
+        if ($v->fails()) {
             return redirect()->back()->withErrors($v->errors());
         }
         $date = [
@@ -59,7 +59,7 @@ Class CategoriesController extends Controller
         ];
 
         //process insert
-        if(CategoriesModel::insert($date)) {
+        if (CategoriesModel::insert($date)) {
             $request->session()->flash('alert-success','Thành công');
             return back();
         } else {
@@ -93,8 +93,8 @@ Class CategoriesController extends Controller
             [
                 'name.required'=>'Vui lòng nhập tên loại'
             ]
-        );
-        if($v->fails()) {
+        ); 
+        if ($v->fails()) {
             return redirect()->back()->withErrors($v->errors());
         }
 
@@ -102,7 +102,7 @@ Class CategoriesController extends Controller
             'name' => $_POST['name']
         ];
 
-        if(CategoriesModel::update_cagtegories($id,$date)) {
+        if (CategoriesModel::update_cagtegories($id,$date)) {
             $request->session()->flash('alert-success','Thành công');
             return redirect()->route('categories.list');
         } else {
@@ -120,8 +120,8 @@ Class CategoriesController extends Controller
      */
     public function delete($id , Request $request) {
         $count = count(ProductsModel::get_product_by_cate_all($id));
-        if($count == 0) {
-            if(CategoriesModel::delete_categories($id)) {
+        if ($count == 0) {
+            if (CategoriesModel::delete_categories($id)) {
                 $request->session()->flash('alert-success','Thành công');
                 return redirect()->back();
             } else {

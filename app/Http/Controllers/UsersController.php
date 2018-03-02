@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\AuthenticatesUsers;
+use App\Http\Models\UsersQModel;
+use App\Http\Models\UsersModel;
 use App\Http\Requests;
 use App\Http\Requests\registerRequest;
 use Illuminate\Http\Request;
@@ -12,9 +14,8 @@ use App\User;
 use Hash;
 class UsersController extends Controller {
 
-    public function index()
-    {
-        $users = User::paginate(5);
+    public function index() {
+        $users = UsersModel::get_users_by_userid(Auth::user()->id);
         $data = [
             'users' => $users
         ];
@@ -27,14 +28,13 @@ class UsersController extends Controller {
     }
 
     public function store(registerRequest $request) {
-        if(User::create(array('name'=>$request->name,'email'=>$request->email,'level'=>$request->level,'password'=>Hash::make($request->password)))) {
+        if (User::create(array('name'=>$request->name,'email'=>$request->email,'level'=>$request->level,'password'=>Hash::make($request->password)))) {
             $request->session()->flash('alert-success',"Thành công");
             return redirect()->back();
         } else {
             $request->session()->flash('alert-danger',"Thất bại");
             return redirect()->back();
         }
-
         
     }
 
@@ -49,15 +49,13 @@ class UsersController extends Controller {
         $user->name = $request->name;
         $user->email = $request->email;
         $user->level = $request->level;
-        if($user['password'] != $request->password) {
+        if ($user['password'] != $request->password) {
             $user->password = Hash::make($request->password);
         }
        
         $user->save();
         $request->session()->flash('alert-success',"Thành công");
         return redirect()->route('users.list');
-
     }
-
 
 }

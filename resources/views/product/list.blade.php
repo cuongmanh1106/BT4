@@ -53,13 +53,13 @@
             <td><img src="{{ asset('/public/images/')}}/{{$s->images}}" width="150px"></td>
             <td>{{ \Carbon\Carbon::createFromTimeStamp(strtotime($s->created_at))->diffForHumans()}}</td>
             <td>
-              <a href="{!! route('pro_img.list',$s->id) !!}" title="Edit" >
+              <a class="{{ checkRoleViewDetail(Auth::user()->level)?'':'disable' }}" href="{!! route('pro_img.list',$s->id) !!}" title="Edit" >
               <img src="{{ asset('/public/images/icons/search.png') }}" alt="Edit" />
             </a>
-              <a class="{{ (Auth::user()->level == 1)?'disable':'' }}" href="{!! route('product.edit',$s->id) !!}" title="Edit" >
+              <a class="{{ checkRoleSuperAdmin(Auth::user()->level)?'':'disable' }}" href="{!! route('product.edit',$s->id) !!}" title="Edit" >
               <img src="{{ asset('/public/images/icons/pencil.png') }}" alt="Edit" />
             </a> 
-            <a class="{{ (Auth::user()->level == 1)?'disable':'' }}" onclick="return Xoasanpham()" href="{!! route('product.delete',$s->id) !!}" title="Edit" >
+            <a class="{{ checkRoleSuperAdmin(Auth::user()->level)?'':'disable' }}" onclick="return Xoasanpham()" href="{!! route('product.delete',$s->id) !!}" title="Edit" >
               <img src="{{ asset('/public/images/icons/cross.png') }}" alt="Edit" />
             </a> 
 

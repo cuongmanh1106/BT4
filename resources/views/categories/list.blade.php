@@ -64,13 +64,13 @@
             
             
             <td>
-              <a class="{{ (Auth::user()->level == 1)?'disable':'' }}" href="{!! route('categories.edit',$s->id) !!}" title="Edit" >
+              <a class="{{ checkRoleSuperAdmin(Auth::user()->level)?'':'disable' }}" href="{!! route('categories.edit',$s->id) !!}" title="Edit" >
               <img src="{{ asset('/public/images/icons/pencil.png') }}" alt="Edit" />
             </a> 
-            <a class="{{ (Auth::user()->level == 1)?'disable':'' }}" onclick="return Xoasanpham()" href="{!! route('categories.delete',$s->id) !!}" title="Edit" >
+            <a class="{{ checkRoleSuperAdmin(Auth::user()->level)?'':'disable' }}" onclick="return Xoasanpham()" href="{!! route('categories.delete',$s->id) !!}" title="Edit" >
               <img src="{{ asset('/public/images/icons/cross.png') }}" alt="Edit" />
             </a> 
-            <a href="{!! route('categories.list_pro',$s->id) !!}" title="Edit" >
+            <a class="{{ checkRoleViewDetail(Auth::user()->level)?'':'disable' }}" href="{!! route('categories.list_pro',$s->id) !!}" title="Edit" >
               <img src="{{ asset('/public/images/icons/search.png') }}" alt="Edit" />
             </a> 
 

@@ -15,8 +15,7 @@ class CategoriesModel extends Model
        return $result;
     }
 
-    public static function get_categories_by_id($id)
-    {
+    public static function get_categories_by_id($id) {
     	$result = DB::table('categories')
                 ->where('id', '=', $id)
                 ->get();
@@ -27,8 +26,7 @@ class CategoriesModel extends Model
         return $result[0];
     }
 
-    public static function insert($data)
-    {
+    public static function insert($data) {
     	return DB::table('categories')->insert($data);
     }
     public static function update_cagtegories($id, $content) {
@@ -36,8 +34,7 @@ class CategoriesModel extends Model
                 ->where('id', $id)
                 ->update($content);
     }
-    public static function delete_categories($id)
-    {
+    public static function delete_categories($id) {
     	return DB::table('categories')
     			->where('id','=',$id)
     			->delete();

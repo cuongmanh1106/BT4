@@ -10,6 +10,10 @@ h1, h2, h3 {margin: 0;}
 ul, ol {margin: 0;}
 p {margin: 0;}
 
+a.disable {
+    pointer-events: none;
+    cursor: default;
+}
 html, body{
 	font-family: 'Roboto', sans-serif;
     font-size: 100%;

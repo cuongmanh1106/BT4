@@ -72,8 +72,10 @@
                                         <label for="cemail" class="control-label col-lg-3">Level (required)</label>
                                         <div class="col-lg-6">
                                             <select class="form-control input-lg m-bot15" name="level">
+                                                <option value="0">Member</option>
                                                 <option value="1">Admin</option>
                                                 <option value="2">SuperAdmin</option>
+                                                <option value="3">Manage page</option>
                                             </select>
                                         </div>
                                     </div>

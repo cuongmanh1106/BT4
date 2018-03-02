@@ -20,7 +20,7 @@ class LoginController extends Controller
             'password' => $request->password,
         );
 
-        if (Auth::attempt($login)) {//&& Auth::user()->level  == 1
+        if (Auth::attempt($login) ) {//&& Auth::user()->level  == 1
              return redirect()->route('product.list');
         } else {
             return back();

@@ -17,7 +17,7 @@
                     </a>
                     <ul class="sub"> 
 						<li><a href="{{ route('product.list') }}">List</a></li>
-						<li><a class="{{ (Auth::user()->level==1)?'disable':'' }}" href="{{ route('product.create') }}">Insert</a></li>
+						<li><a class="{{ checkRoleSuperAdmin(Auth::user()->level)?'':'disable' }}" href="{{ route('product.create') }}">Insert</a></li>
                     </ul>
                 </li>
                
@@ -28,7 +28,7 @@
                     </a>
                     <ul class="sub">
                         <li><a href="{{ route('categories.list') }}">List</a></li>
-                        <li><a class="{{ (Auth::user()->level==1)?'disable':'' }}" href="{{ route('categories.create') }}">Insert</a></li>
+                        <li><a class="{{ checkRoleSuperAdmin(Auth::user()->level)?'':'disable' }}" href="{{ route('categories.create') }}">Insert</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -37,8 +37,8 @@
                         <span>Users</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="{{ route('users.list')}}">List</a></li>
-                        <li><a class="{{ (Auth::user()->level==1)?'disable':'' }}" href="{{ route('users.create')}}">Insert</a></li>
+                        <li><a class="{{ checkRoleViewUser(Auth::user()->level)?'':'disable' }}" href="{{ route('users.list')}}">List</a></li>
+                        <li><a class="{{ checkRoleSuperAdmin(Auth::user()->level)?'':'disable' }}" href="{{ route('users.create')}}">Insert</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">

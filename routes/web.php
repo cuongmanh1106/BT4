@@ -24,7 +24,7 @@ Route::get('a',function(){
 
 Route::get('/','HomeController@index')->name('/');
 
-Route::group(['prefix'=>'admin' , 'middleware'=>'Login'],function() {
+Route::group(['prefix'=>'admin' , 'middleware'=>'ManagerAdmin'],function() {
 
 	Route::group(['prefix'=>'product'],function(){
 		Route::get('/','ProductsController@index')->name('product.list');
@@ -50,7 +50,7 @@ Route::group(['prefix'=>'admin' , 'middleware'=>'Login'],function() {
 		
 	});
 
-	Route::group(['prefix'=>'productImages'],function() {
+	Route::group(['prefix'=>'productImages', 'middleware'=>'isSupperAdmin'],function() {
 		Route::get('/{id}','ProductImagesController@index')->name('pro_img.list');
 		Route::get('/create/{id}','ProductImagesController@create')->name('pro_img.create');
 		Route::post('/store/{id}','ProductImagesController@store')->name('pro_img.store');

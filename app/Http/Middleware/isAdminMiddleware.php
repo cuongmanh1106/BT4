@@ -3,8 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Auth;
-class LoginMiddleware
+
+class isAdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class LoginMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && (Auth::user()->level == 1 || Auth::user()->level == 2|| Auth::user()->level == 3)) {
+        if (Auth::check() && (Auth::user()->level == 1)) {
             return $next($request);
         } else {
             return back();

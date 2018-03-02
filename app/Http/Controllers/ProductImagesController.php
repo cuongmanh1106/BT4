@@ -36,7 +36,7 @@ class ProductImagesController extends Controller {
                 'name.required' => 'Vui lòng nhập tên sản phẩm'
             ]
         );
-        if($v->fails())
+        if ($v->fails())
             return redirect()->back()->withErrors($v->errors());
         $file = $request->file('name');
         $img = newImage($file->getClientOriginalName());
@@ -46,7 +46,7 @@ class ProductImagesController extends Controller {
         ];
 
         //process insert product_images
-        if(ProductImagesModel::insert_productImages($data)) {
+        if (ProductImagesModel::insert_productImages($data)) {
         	$file->move("public/images",$img);
         	$request->session()->flash('alert-success','Success!!!');
         	return back();

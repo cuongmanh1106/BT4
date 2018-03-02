@@ -16,8 +16,7 @@ class ProductImagesModel extends Model
        return $result;
     }
 
-    public static function get_productImages_by_id($id)
-    {
+    public static function get_productImages_by_id($id) {
     	$result = DB::table('productimages')
                 ->where('id', '=', $id)
                 ->get();
@@ -28,8 +27,7 @@ class ProductImagesModel extends Model
         return $result[0];
     }
 
-    public static function insert_productImages($data)
-    {
+    public static function insert_productImages($data) {
     	return DB::table('productImages')->insert($data);
     }
     public static function update_productImages($id, $content) {
@@ -37,8 +35,7 @@ class ProductImagesModel extends Model
                 ->where('id', $id)
                 ->update($content);
     }
-    public static function delete_productImages($id)
-    {
+    public static function delete_productImages($id) {
     	return DB::table('productImages')
     			->where('id','=',$id)
     			->delete();

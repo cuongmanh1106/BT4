@@ -15,7 +15,7 @@ class CheckIdMiddleWare
      */
     public function handle($request, Closure $next)
     {
-        if($request['cost'] <= 0)
+        if ($request['cost'] <= 0)
             return back();
         else
             return $next($request);
